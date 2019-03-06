@@ -1,0 +1,237 @@
+<!-- ======================================= Body ======================================= -->
+<div class="row" style="background: black;  margin-top: -16px; width: 103%; position: fixed; z-index: 1">
+    <div class="col-sm-9" style="background: rgb(0, 0, 0)">
+    <a href="/" id="siteName"><i class="fas">Gamer DB</i></a>
+    </div>
+    
+
+    <div class="col-sm-3" style="margin-top: 10px; margin-right: 0; background: rgb(0, 0, 0);">
+        <form action="" class="searchBar" type="text">
+            <input type="search" class="searchBar">
+            <i class="fa fa-search"></i>
+        </form>
+        {{!-- <div class="form-group">
+            <input id="inputGame1" type="text" placeholder="  keyword">
+            <button class="btn btn-primary" style="margin-left: -2px" id="searchBtn1">Search</button>
+        </div> --}}
+    </div>
+
+
+
+    <div class="col-sm-2 sorting" style="background: rgb(0, 0, 0)">
+        {{!-- <form>
+            <div class="form-group"> --}}
+                {{!-- <label for="exampleFormControlSelect1">Ordering</label> --}}
+                {{!-- <select id="inputGame2" style="color: rgb(142, 142, 142)" id="exampleFormControlSelect1">
+                    <option>Year Desc</option>
+                    <option>Year Asc</option>
+                    <option>Sales Desc</option>
+                    <option>Sales Asc</option>
+                </select>
+            <button type="submit" class="btn btn-primary" style="border-radius: 10px 30px 30px 10px" id="searchBtn2">Submit</button>
+            </div>
+        </form> --}}
+    </div>
+{{!-- --------------------------------------- --}}
+<div class="col-sm-3 sorting" style="background: rgb(0, 0, 0)">
+
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <a style="background: rgb(33, 33, 33); border: 2px rgb(29, 29, 29) solid; border-radius: 10px 0px 0px 0px" class="btn btn-secondary" href="/Genre/action">Action</a>
+    <a style="background: black; border: 2px rgb(29, 29, 29) solid" class="btn btn-secondary" href="/Genre/rpg">RPG</a>
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button"
+                class="btn btn-secondary dropdown-toggle"  style="background: black; border: 2px rgb(29, 29, 29) solid; border-radius: 0px 10px 0px 0px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Genres
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="/Genre/sports">Sports</a>
+        <a class="dropdown-item" href="/Genre/Shooter">Shooter</a>
+        </div>
+    </div>
+    </div>
+</div>
+{{!-- --------------------------------------- --}}
+{{!-- 
+    <div class="col-sm-8 sorting" style="background: rgb(173, 0, 247)">
+        <div class="form-group">
+            <p> Sorting by genre</p>
+            <a href="/Genre/action" class="btn btn-primary">Action</a>
+            <a href="/Genre/rpg" class="btn btn-primary">RPG</a>
+            <a href="/Genre/sports" class="btn btn-primary">Sports</a>
+            <a href="/Genre/Shooter" class="btn btn-primary">Shooter</a>
+            ......
+        </div>
+    </div> --}}
+
+
+
+{{!-- -------------------------------- --}}
+<div class="col-sm-3 sorting" style="background: rgb(0, 0, 0)">
+
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <a style="background: black; border: 2px rgb(29, 29, 29) solid; border-radius: 10px 0px 0px 0px" class="btn btn-secondary" href="/platform/ps4">PS4</a>
+    <a style="background: black; border: 2px rgb(29, 29, 29) solid" class="btn btn-secondary" href="/platform/XOne">XOne</a>
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button"
+                class="btn btn-secondary dropdown-toggle"  style="background: black; border: 2px rgb(29, 29, 29) solid; border-radius: 0px 10px 0px 0px" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Platforms
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="/platform/WiiU">WiiU</a>
+        <a class="dropdown-item" href="/platform/3DS">3DS</a>
+
+        </div>
+    </div>
+    </div>
+</div>
+<div class="col-sm-4 sorting" style="background: rgb(0, 0, 0); float: right">
+    <a href="#" style="float: right; margin-right: 10px"> Login | Register</a>
+</div>
+{{!-- ------------------------------- --}}
+
+{{!-- 
+
+        <div class="col-sm-4 sorting" style="background: rgb(139, 6, 113)">
+            <p> Sorting by platform</p>
+            <a href="/platform/ps4" class="btn btn-primary">ps4</a>
+            <a href="/platform/XOne" class="btn btn-primary">XOne</a>
+            <a href="/platform/WiiU" class="btn btn-primary">WiiU</a>
+            <a href="/platform/3DS" class="btn btn-primary">3DS</a>
+            ......
+        </div> --}}
+
+
+</div>
+<hr>
+<div class="row">
+</div>
+<hr>
+<div class="row">
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr style="box-shadow:  0px 0px 10px 1px  #000000; border-radius: 33%;">
+
+
+
+{{!-- ======================PAGINATION========================== --}}
+
+<div style="float: right; margin-right: 30px;">
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#!" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#!">1</a></li>
+    <li class="page-item"><a class="page-link" href="#!">2</a></li>
+    <li class="page-item"><a class="page-link" href="#!">3</a></li>
+    <li class="page-item">
+
+        
+      <a class="page-link" href="#!" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{{!-- ========================PAGINATION======================== --}}
+
+
+<label class="lister-sort-by-label" for="lister-sort-by-options">Sort by: </label>
+<select id="lister-sort-by-options" name="sort" class="lister-sort-by">
+        <option value="rk:ascending" selected="selected">
+          Ranking
+        </option>
+        <option value="ir:descending">
+          Release Date
+        </option>
+        <option value="us:descending">
+          Rating
+        </option>
+        <option value="nv:descending">
+          Number of Ratings
+        </option>
+        <option value="ur:descending">
+          Your Rating
+        </option>
+    </select>
+</div>
+
+{{!-- game list --}}
+<div class="row" style="margin-top: 70px">
+    <div class="col-sm-12">
+        <h2>Games List</h2>
+
+        <dir class="gameList">
+            {{#each game}}
+            <div class="gameCard">
+                <div class="flip">
+                    <div class="front">
+                        <img src="#" alt="photo" />
+                    </div>
+                    <div class="back">
+                        <h5>Game Name: {{this.Name}}</h5>
+                        <p>Game Platform: {{this.Platform}}</p>
+                        <p>Year_of_Release: {{this.Year_of_Release}}</p>
+                        <p>Genre: {{this.Genre}} </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </dir>
+    </div>
+</div>
+
+<!-- ======================================= footer ======================================= -->
+<footer>
+    <hr>
+    <div>Copyright &copy; 2019</div>
+</footer>
+
+<script>
+    $(document).ready(function () {
+
+        $(".gameCard").({
+            axis: 'y',
+            trigger: 'hover',
+        });
+
+        $("#searchBtn").on("click", function () {
+            var input = $('#inputGame').val().trim();
+            var inputName = { name: input };
+            console.log("button clicked");
+
+            $.post("/input", inputName)
+                .then(function (data) {
+                    $(".gameList").prepend(
+                        '<div class="gameCard">' +
+                        '<div class="flip">' +
+                        '<div class="front">' +
+                        '<img src="#" alt="photo" />' +
+                        '</div>' +
+                        '<div class="back">' +
+                        '<h3>Game Name: ' + data.Name + '</h3>' +
+                        '<p>Game Platform: ' + data.Platform + '</p>' +
+                        '<p>Year_of_Release: ' + data.Year_of_Release + '</p>' +
+                        '<p>Genre: ' + data.Genre + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>');
+                    $('#inputGame').val("");
+                    console.log("input post");
+                });
+        })
+
+    })
+</script>
