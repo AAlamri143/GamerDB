@@ -1,0 +1,183 @@
+<div class="row top">
+    <div class="col-sm-3.5 f-h-icon">
+        <a href="/favorite" class="btn btn-primary" id="favorite-icon">Favorite</a>
+        <a href="/" class="btn btn-primary" id="home-icon">Home</a>
+    </div>
+    <div class="col-sm-2.5">
+        <a href="/" id="siteName"><i class="fas"
+            style="font-family: 'Monoton', cursive; padding: 30px; margin-top: -20px; margin-left: -10px; color: rgb(98, 106, 189); font-size: 80px">DB</i></a>
+        <a href="/" id="siteName"><i class="fas"
+            style="font-family: 'Monoton', cursive; padding: 30px; margin-left: -225px; color: rgb(255, 0, 174); font-size: 40px">Gamer</i></a>
+    </div>
+    <div class="wrap">
+        <div class="search">
+            <input class="input searchTerm" id="inputGame" type="text" placeholder="Game Name">
+            <button class="btn btn-primary searchButton" id="searchBtn"><i class="fa fa-search"></i></button>
+            <div class="searchRes" data-show="false">
+            </div>
+            {{!-- search result --}}
+        </div>
+    </div>
+    <div class="row" id="selectSort">
+        <form class="sortForm">
+            <select class="select" name="games" id="platform">
+                <option value="">Platforms</option>
+                <option value="ps4">PS4</option>
+                <option value="xb1">XBox</option>
+                <option value="wiiu">WiiU</option>
+                <option value="3ds">3DS</option>
+            </select>
+            <select class="select" name="games" id="genre">
+                <option value="">Genres</option>
+                <option value="act">Action</option>
+                <option value="rpg">RPG</option>
+                <option value="spt">Sport</option>
+                <option value="sht">Shooters</option>
+            </select>
+            <button type="submit" class="btn-success" id="sortBtn">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+        <div class="col-sm-12">
+            <form class="orderForm">
+                <select class="select" name="games" id="gameOrder">
+                    <option value="">Order by</option>
+                    <option value="yd">Year Desc</option>
+                    <option value="ya">Year Asc</option>
+                    <option value="sd">Sales Desc</option>
+                    <option value="sa">Sales Asc</option>
+                </select>
+                <button type="submit" class="btn-success" id="orderBtn">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+</div>
+<!-- ======================================= Body ======================================= -->
+<div class="row">
+    <div class="col-sm-12 row cardBody">
+        <div class="col-sm-6 leftSide">
+            <img id="card-img" src="" alt="If there's no img, means the API search has reach to the limit in 30days">
+        </div>
+        <div class="col-sm-6 rightSide">
+            <dir class="gameList" id="rightBox">
+                {{#each game}}
+                <div class="cardC transition">
+                    <h2 class="transition" id="rightTitle">{{this.Name}}</h2> <br><br>
+                    <p>Year of Release: {{this.Year_of_Release}} <br>
+                        Platform: {{this.Platform}} <br>
+                        Genre: {{this.Genre}} <br>
+                        North America Sales: {{this.NA_Sales}} <br>
+                        Global Sales: {{this.Global_Sales}}
+                    </p>
+                    <p><button class="favBtn btn-danger" id="card-fav-btn" data-gameId="{{this.id}}"
+                            data-favSta="{{this.isFav}}"><i class="fas fa-heart"></i></button></p>
+                    <div class="cta-container transition">
+                    </div>
+                    <div class="my-rating jq-stars">
+                        Last Rating: <span id="rates"></span> </div>
+                </div>
+                {{/each}}
+            </dir>
+        </div>
+        <div id="description"></div>
+    </div>
+        {{#each game}}
+            <div id="gameName"> {{this.Name}}</div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<br>
+<div class="comments-mobile">
+<hr id="line-m" id="line-card">
+<div class="row">
+    <div class="col-sm-12">
+        <div class="container">
+            <div type="text" class="comList">
+                <h4 id="commentsWord">Comments</h4>
+
+                {{#each card}}
+                <div class="reply">
+                    # {{inc @index}} &nbsp; &nbsp;  &nbsp;
+                    <i class="fas fa-user-circle" id="user"></i> <strong>{{this.UserId}}</strong> <br>  <hr>
+
+                    &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;<i>{{this.Comment}}</i> <br>
+                </div>
+                <hr id="line-m">
+                <br>
+                {{/each}}
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <label for="inputCom">Comments</label>
+                    <textarea class="form-control" id="inputCom" rows="3"></textarea>
+                </div>
+                {{#each game}}
+                <button type="submit" class="btn btn-primary mb-2" id="comBtn" data-id="{{this.id}}">Submit</button>
+                {{/each}}
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- ======================================= footer ======================================= -->
+<footer class="row footer">
+    <hr>
+    <div class="col-sm-6">
+        &nbsp;&nbsp; Copyright &copy; 2019 <hr>
+        <li>Abdullah Alamri</li>
+        <li>James Lamb</li>
+        <li>Isaac Wu</li>
+    </div>
+    <div class="col-sm-6" id="powered">
+        Powered By: "moby games" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</footer>
+<!-- ======================================= script ======================================= -->
+<script>
+    $("#comBtn").on("click", function () {
+        event.preventDefault();
+        var gameId = $(this).data("id");
+        var inputId = $("#inputId").val().trim();
+        var inputCom = $("#inputCom").val().trim();
+        if (inputId.length < 1 || inputCom.length < 1) {
+            alert("missing information")
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/card/comment/" + gameId,
+                data: { inputId: inputId, inputCom: inputCom }
+            }).then(
+                function (data) {
+                    location.reload();
+                })
+        }
+    })
+
+    $.ajax({
+        url: "/api/key",
+        method: "GET"
+    }).then(function (apiKey) {
+        var gameName = $("#gameName").text().split(' ').join('+').slice(1);
+        var queryURL = "https://api.mobygames.com/v1/games?title=" + gameName + "&api_key=" + apiKey.key;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            var image = $("#card-img");
+            image.attr("src", response.games[0].sample_cover.image);
+            $("#card-img").prepend(image);
+            $("#description").prepend('Description: " ' + response.games[0].description + ' "');
+        });
+    });
+
+</script>

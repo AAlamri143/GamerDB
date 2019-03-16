@@ -1,9 +1,6 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
 // *** Dependencies
 // =============================================================
+require('dotenv').config();
 var express = require("express");
 var path = require("path");
 
@@ -21,10 +18,15 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/views'))
 
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+var Handlebars = require('handlebars');
+Handlebars.registerHelper("inc", function(value, options)
+{return parseInt(value) + 1});
 
 // Routes
 // =============================================================

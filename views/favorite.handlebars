@@ -5,9 +5,9 @@
     </div>
     <div class="col-sm-2.5">
         <a href="/" id="siteName"><i class="fas"
-                style="font-family: 'Monoton', cursive; padding: 30px; margin-top: -20px; margin-left: -10px; color: rgb(98, 106, 189); font-size: 80px">DB</i></a>
+            style="font-family: 'Monoton', cursive; padding: 30px; margin-top: -20px; margin-left: -10px; color: rgb(98, 106, 189); font-size: 80px">DB</i></a>
         <a href="/" id="siteName"><i class="fas"
-                style="font-family: 'Monoton', cursive; padding: 30px; margin-left: -225px; color: rgb(255, 0, 174); font-size: 40px">Gamer</i></a>
+            style="font-family: 'Monoton', cursive; padding: 30px; margin-left: -225px; color: rgb(255, 0, 174); font-size: 40px">Gamer</i></a>
     </div>
     <div class="wrap">
         <div class="search">
@@ -52,54 +52,34 @@
                 </button>
             </form>
         </div>
+
     </div>
     <hr>
 </div>
 <!-- ======================================= Body ======================================= -->
-<div class="row" id="page">
-    <div class="bodySort">
-        <h2 id="m-f-c">Game List</h2>
-        {{!-- <div class="col-sm-4">
-            <form class="orderForm">
-                <select class="select" name="games" id="gameOrder">
-                    <option value="">Order by</option>
-                    <option value="yd">Year Desc</option>
-                    <option value="ya">Year Asc</option>
-                    <option value="sd">Sales Desc</option>
-                    <option value="sa">Sales Asc</option>
-                </select>
-                <button type="submit" class="btn-success" id="orderBtn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-        </div> --}}
-        <hr id="line-m">
-        <div class="col-sm-4 navNo">
-            <nav aria-label="bootstrap">
-                <ul class="pagination">
-                    <li class="page-item" id="previous-page">
-                        <a class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        {{!-- games loop --}}
+<div class="row">
+    <div class="col-sm-12 fav-top">
+        <h2 id="m-f-c">&nbsp;&nbsp;&nbsp;&nbsp;Favorite List</h2>
+            <hr id="line-f">
         <dir class="gameList">
-            {{#each game}}
-            <div class="list-group" id="gameCard">
-                <div class="card transition">
-                    <h2 class="transition">{{this.Name}}</h2>
-                    <p>Year of Release: {{this.Year_of_Release}} <br> Platform: {{this.Platform}} </p>
-                    <div class="cta-container transition" id="card-fav-m">
-                        <button class="favBtn btn-danger" data-gameId="{{this.id}}" data-favSta="{{this.isFav}}">
-                            <i class="fas fa-heart"></i>
-                        </button>
-                    </div>
-                    <div class="cta-container transition">
-                        <a href="/card/{{this.id}}" class="cta cardBtn">More Details</a>
-                    </div>
-                    <div class="card_circle transition"></div>
+            {{#each fav}}
+            <div class="card transition card_fav">
+                <h2 class="transition">{{this.Name}}</h2>
+                <p class="p_fav" id="p_fav">
+                    Year of Release: {{this.Year_of_Release}} <br>
+                    Platform: {{this.Platform}} <br>
+                    Genre: {{this.Genre}} <br>
+                    North America Sales: {{this.NA_Sales}} <br>
+                    Global Sales: {{this.Global_Sales}}
+                </p>
+                <div class="my-rating jq-stars">Last Rating: <span id="rates"></span></div>
+                <div class="cta-container transition" id="fav-fav">
+                    <button class="unFavBtn" data-gameId="{{this.GameId}}"><i class="fas fa-times"></i></button><br>
                 </div>
+                <div class="cta-container transition" id="fav-details">
+                    <a href="/card/{{this.GameId}}" class="cta cardBtn">More Details</a>
+                </div>
+                <div class="card_circle transition card_circle_fav"></div>
             </div>
             {{/each}}
         </dir>
@@ -108,21 +88,35 @@
 <!-- ======================================= footer ======================================= -->
 <footer class="row footer">
     <hr>
-    <div class="col-sm-4">
-        &nbsp;&nbsp; Copyright &copy; 2019
-        <hr>
+    <div class="col-sm-6">
+        &nbsp;&nbsp; Copyright &copy; 2019 <hr>
         <li>Abdullah Alamri</li>
         <li>James Lamb</li>
         <li>Isaac Wu</li>
     </div>
-    <div class="col-sm-4" id="qrcode">
-        <img src="/css/qrcode.png" class="qr" alt="">
-    </div>
-    <div class="col-sm-4" id="powered">
+    <div class="col-sm-6" id="powered">
         Powered By: "moby games" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </footer>
 <!-- ======================================= script ======================================= -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
+<script>
+    $(".unFavBtn").on("click", function () {
+        let gameId = $(this).data("gameid");
+        $.ajax({
+            type: "PUT",
+            url: "/favorite/remove/" + gameId,
+        }).then(
+            function (data) {
+                console.log("favorite state changed to false");
+            })
+
+        $.ajax({
+            type: "DELETE",
+            url: "/favorite/remove/" + gameId,
+            success: function (result) {
+                location.reload();
+                // alert("removed from favorite!");
+            }
+        });
+    })
 </script>
