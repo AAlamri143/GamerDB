@@ -25,20 +25,29 @@ The features of GamerDB are:
 * Games Moby API
 * Website Suitable for Mobile Devices
 
-### Expamples for laptop browsers:
+## Examples for laptop browsers:
+
 ![GitHub Logo](/public/css/2.png)
+
 ![GitHub Logo](/public/css/3.png)
-![GitHub Logo](/public/css/4.png)
+
 ![GitHub Logo](/public/css/5.png)
+
 ![GitHub Logo](/public/css/6.png)
+
 ![GitHub Logo](/public/css/7.png)
+
 ![GitHub Logo](/public/css/8.png)
+
 ![GitHub Logo](/public/css/9.png)
 
-### Expamples for laptop browsers:
+## Expamples for mobile browsers:
 
 ![GitHub Logo](/public/css/11.png)
+
 ![GitHub Logo](/public/css/22.png)
+
 ![GitHub Logo](/public/css/33.png)
+
 ![GitHub Logo](/public/css/44.png)
 
